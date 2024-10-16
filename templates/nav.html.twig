@@ -1,0 +1,21 @@
+<nav id="nav">
+	<ul>
+		<li><a href="{{path('app_index')}}">Home</a></li>
+		<li>
+			<a href="{{path('app_course_index')}}">Course</a>
+			<ul>
+				{{ render(controller(
+        'App\\Controller\\CourseController::recentCourse'
+    )) }}
+			</ul>
+		</li>
+		<li><a href="left-sidebar.html">Classe</a></li>
+		<li><a href="right-sidebar.html">Users</a></li>
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<li><a href="{{path('app_logout')}}">Logout</a></li>
+			{% else %}
+				<li><a href="{{path('app_login')}}">Login</a></li>
+				<li><a href="{{path('app_register')}}">Register</a></li>
+		{% endif %}
+	</ul>
+</nav>
